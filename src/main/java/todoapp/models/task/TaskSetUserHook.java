@@ -6,16 +6,16 @@ import io.yawp.repository.hooks.Hook;
 
 public class TaskSetUserHook extends Hook<Task> {
 
-	@Override
-	public void beforeShield(Task task) {
-		if(!userService().isUserLoggedIn()) {
-			return;
-		}
-		task.setUser(userService().getCurrentUser().getEmail());
-	}
+    @Override
+    public void beforeShield(Task task) {
+        if (!userService().isUserLoggedIn()) {
+            return;
+        }
+        task.setUser(userService().getCurrentUser().getEmail());
+    }
 
-	private UserService userService() {
-		return UserServiceFactory.getUserService();
-	}
+    private UserService userService() {
+        return UserServiceFactory.getUserService();
+    }
 
 }

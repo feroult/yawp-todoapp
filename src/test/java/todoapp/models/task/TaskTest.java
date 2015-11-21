@@ -3,7 +3,6 @@ package todoapp.models.task;
 import io.yawp.testing.appengine.AppengineTestHelper;
 import org.junit.Before;
 import org.junit.Test;
-
 import todoapp.utils.EndpointTestCase;
 
 import java.util.List;

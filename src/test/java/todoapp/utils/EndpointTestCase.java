@@ -4,9 +4,9 @@ import io.yawp.testing.EndpointTestCaseBase;
 
 public class EndpointTestCase extends EndpointTestCaseBase {
 
-	@Override
-	protected String getAppPackage() {
-		return "todoapp";
-	}
+    @Override
+    protected String getAppPackage() {
+        return "todoapp";
+    }
 
 }
