@@ -20,7 +20,7 @@ public class SynchronizationTask implements DeferredTask {
             return;
         }
 
-        
+
     }
 
     private boolean isRightVersion() {
