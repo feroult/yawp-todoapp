@@ -22,6 +22,18 @@
             <version>${yawp.version}</version>
         </dependency>
 
+        <!-- mysql dependencies -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.40</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud.sql</groupId>
+            <artifactId>mysql-socket-factory</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
         <!-- testing dependencies -->
         <dependency>
             <groupId>io.yawp</groupId>
@@ -74,13 +86,12 @@
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>${appengine.target.version}</version>
                 <configuration>
-                    <!-- <address>0.0.0.0</address> -->
+                    <!--<address>0.0.0.0</address>-->
                     <jvmFlags>
                         <jvmFlag>-Xdebug</jvmFlag>
                         <jvmFlag>-Xnoagent</jvmFlag>
                         <jvmFlag>-Xrunjdwp:transport=dt_socket,address=4001,suspend=n,server=y
                         </jvmFlag>
-                        <!-- change this if you want hdr to simulate eventual consistency -->
                         <jvmFlag>-Ddatastore.default_high_rep_job_policy_unapplied_job_pct=0</jvmFlag>
                     </jvmFlags>
                 </configuration>

@@ -7,7 +7,7 @@ import io.yawp.repository.annotations.ParentId;
 
 import java.io.Serializable;
 
-@Endpoint(kind = "__sync_versions")
+@Endpoint(path = "/sync-versions")
 public class Version implements Serializable {
 
     @Id
