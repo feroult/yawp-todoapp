@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 import static io.yawp.repository.Yawp.yawp;
 
-public class SynchronizationTask implements DeferredTask {
+public class SynchronizationDeferredTask implements DeferredTask {
 
     private String entityUri;
 
@@ -22,11 +22,11 @@ public class SynchronizationTask implements DeferredTask {
 
     private long taskVersion;
 
-    public SynchronizationTask(Syncable entity, Version taskVersion) {
-        this.entityUri = taskVersion.entityId.getUri();
-        this.entityKind = taskVersion.entityId.getModel().getKind();
+    public SynchronizationDeferredTask(Object entity, Version taskVersion) {
+        this.entityUri = taskVersion.getEntityUri();
+        this.entityKind = taskVersion.getEntityKind();
         this.entityJson = JsonUtils.to(entity);
-        this.taskVersion = taskVersion.version;
+        this.taskVersion = taskVersion.getVersion();
     }
 
     @Override
@@ -75,11 +75,11 @@ public class SynchronizationTask implements DeferredTask {
     private boolean isRightVersion() {
         Version currentVersion = versionId().fetch();
 
-        if (currentVersion.version > taskVersion) {
+        if (currentVersion.getVersion() > taskVersion) {
             return false;
         }
 
-        if (currentVersion.version < taskVersion) {
+        if (currentVersion.getVersion() < taskVersion) {
             throw new RuntimeException("stale read, wait the right version");
         }
 

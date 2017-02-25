@@ -18,4 +18,27 @@ public class Version implements Serializable {
 
     Long version = 0l;
 
+    public void setId(IdRef<Version> id) {
+        this.id = id;
+    }
+
+    public void setEntityId(IdRef<?> entityId) {
+        this.entityId = entityId;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public String getEntityUri() {
+        return entityId.getUri();
+    }
+
+    public String getEntityKind() {
+        return entityId.getModel().getKind();
+    }
+
+    public void inc() {
+        version++;
+    }
 }
