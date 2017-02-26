@@ -12,7 +12,7 @@ public class SyncableInitAction extends Action<Syncable> {
     @GET
     public void syncInit() {
         Queue queue = QueueHelper.getDefaultQueue();
-        queue.add(TaskOptions.Builder.withPayload(new InitDeferredTask(requestContext.getEndpointClazz())));
+        queue.add(TaskOptions.Builder.withPayload(new FanoutDeferredTask(requestContext.getEndpointClazz())));
     }
 
 }

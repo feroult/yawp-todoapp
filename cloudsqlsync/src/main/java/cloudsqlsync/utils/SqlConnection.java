@@ -17,13 +17,17 @@ public class SqlConnection {
     }
 
     public static SqlConnection newInstance() {
-        return new SqlConnection(connect());
+        return new SqlConnection(connect(false));
     }
 
-    private static Connection connect() {
+    public static SqlConnection newInstance(boolean autoCommit) {
+        return new SqlConnection(connect(autoCommit));
+    }
+
+    private static Connection connect(boolean autoCommit) {
         try {
             Connection conn = DriverManager.getConnection(getUrl());
-            conn.setAutoCommit(false);
+            conn.setAutoCommit(autoCommit);
             return conn;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -74,5 +78,4 @@ public class SqlConnection {
             e.printStackTrace();
         }
     }
-
 }
