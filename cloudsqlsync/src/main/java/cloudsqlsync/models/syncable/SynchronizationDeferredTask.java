@@ -38,9 +38,10 @@ public class SynchronizationDeferredTask implements DeferredTask {
 
             helper.createTableIfNotExists(conn, entityKind);
             helper.updateEntity(conn, entityKind, entityUri, entityJson, taskVersion);
+            conn.commit();
 
         } finally {
-            conn.commit();
+            conn.close();
         }
 
     }

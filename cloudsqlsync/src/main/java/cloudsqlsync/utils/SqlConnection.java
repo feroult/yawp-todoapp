@@ -78,4 +78,12 @@ public class SqlConnection {
             e.printStackTrace();
         }
     }
+
+    public void close() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            handleError(e);
+        }
+    }
 }
