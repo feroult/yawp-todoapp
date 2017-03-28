@@ -18,10 +18,11 @@ public class SynchronizationHelper extends Feature {
 
     public void enqueueTaskFor(Object entity) {
         Queue queue = QueueHelper.getDefaultQueue();
-        queue.add(TaskOptions.Builder.withPayload(new SynchronizationDeferredTask(entity, newVersion(entity))));
+        Version taskVersion = saveVersionMarker(entity);
+        queue.add(TaskOptions.Builder.withPayload(new SynchronizationDeferredTask(entity, taskVersion)));
     }
 
-    public Version newVersion(Object entity) {
+    public Version saveVersionMarker(Object entity) {
         ObjectHolder holder = new ObjectHolder(entity);
 
         IdRef<?> entityId = holder.getId();

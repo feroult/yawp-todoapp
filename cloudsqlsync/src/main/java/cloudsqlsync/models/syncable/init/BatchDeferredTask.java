@@ -42,7 +42,7 @@ public class BatchDeferredTask implements DeferredTask {
 
             helper.createTableIfNotExists(conn, model.getKind());
             helper.updateEntity(conn, model.getKind(), id.getUri(), JsonUtils.to(entity), 1l);
-            helper.newVersion(entity);
+            helper.saveVersionMarker(entity);
 
         } catch (NoResultException e) {
         }
