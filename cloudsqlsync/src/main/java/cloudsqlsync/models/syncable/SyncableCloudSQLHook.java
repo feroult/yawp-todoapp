@@ -2,7 +2,7 @@ package cloudsqlsync.models.syncable;
 
 import io.yawp.repository.hooks.Hook;
 
-public class SyncableHooks extends Hook<Syncable> {
+public class SyncableCloudSQLHook extends Hook<Syncable> {
 
     @Override
     public void beforeSave(Syncable entity) {
